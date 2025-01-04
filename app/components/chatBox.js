@@ -1,8 +1,8 @@
 "use client";
+import { booksData } from "@/app/lib/bookData";
 import React, { useState } from "react";
-import {booksData} from "@/app/lib/bookData";
 
-function ChatBox({title}) {
+function ChatBox({ title }) {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -51,10 +51,10 @@ function ChatBox({title}) {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`p-2 my-2 rounded-lg text-[#c0caf5] w-fit flex-wrap wrap max-w-[15rem] ${
+            className={`p-2 my-2 rounded-lg text-[#c0caf5] w-fit flex-wrap wrap ${
               message.sender === "user"
                 ? "bg-[#565f89] ml-auto"
-                : "bg-[#414868] mr-auto"
+                : "bg-[#414868] mr-10"
             }`}
           >
             {message.text}

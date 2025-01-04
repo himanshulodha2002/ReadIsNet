@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { ReactReader } from "react-reader";
+import { ResizableBox } from "react-resizable";
+import "react-resizable/css/styles.css";
 import ChatBox from "./chatBox";
 
 function BookViewer({ url, title }) {
@@ -12,8 +14,24 @@ function BookViewer({ url, title }) {
 
   return (
     <div className="flex h-screen w-full bg-[#1a1b26]">
-      <ChatBox title = {title} />
-      <div className="flex-1 bg-[#1a1b26] p-4">
+      <ResizableBox
+        className="bg-[#1a1b26] p-4"
+        width={375}
+        height={Infinity}
+        minConstraints={[200, Infinity]}
+        maxConstraints={[600, Infinity]}
+        resizeHandles={["e"]}
+      >
+        <ChatBox title={title} />
+      </ResizableBox>
+      <ResizableBox
+        className="flex-1 bg-[#1a1b26] p-4"
+        width={Infinity}
+        height={Infinity}
+        minConstraints={[200, Infinity]}
+        maxConstraints={[Infinity, Infinity]}
+        resizeHandles={["w"]}
+      >
         <ReactReader
           url={url}
           title={title}
@@ -43,7 +61,7 @@ function BookViewer({ url, title }) {
             rendition.themes.select("dark");
           }}
         />
-      </div>
+      </ResizableBox>
     </div>
   );
 }
