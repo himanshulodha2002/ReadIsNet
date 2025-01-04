@@ -4,8 +4,8 @@ import { handleChatRequest } from '@/actions/chatbotapi';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { message } = req.body;
-      const response = await handleChatRequest(message);
+      const request = req.body;
+      const response = await handleChatRequest(request);
       res.status(200).json({ response });
     } catch (error) {
       console.error('Error handling chat request:', error);

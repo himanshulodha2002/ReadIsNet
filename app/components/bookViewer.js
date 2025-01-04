@@ -12,7 +12,7 @@ function BookViewer({ url, title }) {
 
   return (
     <div className="flex h-screen w-full bg-[#1a1b26]">
-      <ChatBox />
+      <ChatBox title = {title} />
       <div className="flex-1 bg-[#1a1b26] p-4">
         <ReactReader
           url={url}

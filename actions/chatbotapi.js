@@ -5,16 +5,12 @@ const token = process.env["GITHUB_TOKEN"];
 const endpoint = "https://models.inference.ai.azure.com";
 const modelName = "gpt-4o";
 const client = new OpenAI({ baseURL: endpoint, apiKey: token });
-export async function handleChatRequest(message) {
-  // Simulate a delay for the chatbot response
-  // await new Promise((resolve) => setTimeout(resolve, 1000));
-  // Return a simple predefined response
-  // return `Hello! You said: ${message}`;
-
+export async function handleChatRequest({ message, title }) {
+  const prompt = `I'm reading ${title} . ${message}`;
   const response = await client.chat.completions.create({
     messages: [
       { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: `${message}` },
+      { role: "user", content: `${prompt}` },
     ],
     temperature: 1.0,
     top_p: 1.0,
