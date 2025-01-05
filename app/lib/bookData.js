@@ -1,4 +1,4 @@
-const booksData = [
+export const booksData = [
   {
     title: "The Vital Question - Why Is Life the Way It Is - Nick Lane",
     description:
@@ -57,5 +57,35 @@ const booksData = [
     epub: "/EPUB/b6.epub",
   },
 ];
-
-export default booksData;
+export const services = [
+  {
+    title: "Read Books Online",
+    description:
+      "Discover a vast collection of books available to read directly on our platform. Whether it’s fiction, non-fiction, or a niche genre, we’ve got something for everyone.",
+  },
+  {
+    title: "Genre-Based Book Filtering",
+    description:
+      "Easily find the books that match your interests by filtering through genres. From romance to science fiction, we help you explore what you love.",
+  },
+  {
+    title: "AI-Powered Book Conversations",
+    description:
+      "Dive deeper into the books you’re reading with our AI assistant. Ask questions, discuss themes, and gain unique insights into the story.",
+  },
+  {
+    title: "Interactive Quizzes",
+    description:
+      "Test your knowledge and understanding of the books with engaging quizzes. Learn, challenge yourself, and track your progress.",
+  },
+  {
+    title: "Personalized Recommendations",
+    description:
+      "Discover books tailored to your preferences, helping you find your next great read effortlessly.",
+  },
+  {
+    title: "Seamless User Experience",
+    description:
+      "Navigate with ease across our responsive and user-friendly platform, designed for readers of all ages.",
+  },
+];

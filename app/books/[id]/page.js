@@ -1,13 +1,13 @@
 "use client";
 import BookViewer from "@/app/components/bookViewer";
-import booksData from "@/app/lib/bookData";
+import { booksData } from "@/app/lib/bookData";
 import { useParams } from "next/navigation";
 import React from "react";
 
 function BookPage() {
   const params = useParams();
   const id = params.id;
-  
+
   // Find the book using the id parameter
   const book = booksData.find((b) => b.link === id);
 
