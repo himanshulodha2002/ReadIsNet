@@ -13,17 +13,19 @@ function BookViewer({ url, title }) {
   };
 
   return (
-    <div className="flex h-screen w-full bg-[#1a1b26]">
-      <ResizableBox
-        className="bg-[#1a1b26] p-4"
-        width={375}
-        height={Infinity}
-        minConstraints={[200, Infinity]}
-        maxConstraints={[600, Infinity]}
-        resizeHandles={["e"]}
-      >
-        <ChatBox title={title} />
-      </ResizableBox>
+    <div className="flex flex-col sm:flex-row h-screen w-full bg-[#1a1b26]">
+      {window.innerWidth > 768 && (
+        <ResizableBox
+          className="bg-[#1a1b26] p-4"
+          width={375}
+          height={Infinity}
+          minConstraints={[200, Infinity]}
+          maxConstraints={[600, Infinity]}
+          resizeHandles={["e"]}
+        >
+          <ChatBox title={title} />
+        </ResizableBox>
+      )}
       <ResizableBox
         className="flex-1 bg-[#1a1b26] p-4"
         width={Infinity}
