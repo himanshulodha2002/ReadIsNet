@@ -2,11 +2,11 @@
 import ChatBox from "@/app/components/chatBox";
 import { summary } from "@/app/lib/bookData";
 import { useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import { ResizableBox } from "react-resizable";
 import "react-resizable/css/styles.css";
 
-export default function SummaryChat() {
+function SummaryChatContent() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
@@ -46,5 +46,13 @@ export default function SummaryChat() {
         </div>
       </ResizableBox>
     </div>
+  );
+}
+
+export default function SummaryChat() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SummaryChatContent />
+    </Suspense>
   );
 }
