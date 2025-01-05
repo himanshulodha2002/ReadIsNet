@@ -84,12 +84,18 @@ function HomePage() {
                 <p className="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">
                   {book.description}
                 </p>
-                <div className="mt-auto flex justify-end">
+                <div className="mt-auto flex justify-between">
                   <Link
                     href={`/books/${book.link}`}
                     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-950 border rounded-lg hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
                   >
                     Read Now
+                  </Link>
+                  <Link
+                    href={`/Pages/summarychat/?id=${book.link}`}
+                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 border rounded-lg hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800"
+                  >
+                    Summary Chat
                   </Link>
                 </div>
               </div>

@@ -1,10 +1,17 @@
 "use client";
 import ChatBox from "@/app/components/chatBox";
+import { summary } from "@/app/lib/bookData";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 import { ResizableBox } from "react-resizable";
 import "react-resizable/css/styles.css";
 
-export default function SummaryChat({ title }) {
+export default function SummaryChat() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
+  const bookSummary = summary.find((book) => book.id === id);
+
   return (
     <div className="flex h-screen w-full bg-[#1a1b26]">
       <ResizableBox
@@ -15,7 +22,7 @@ export default function SummaryChat({ title }) {
         maxConstraints={[600, Infinity]}
         resizeHandles={["e"]}
       >
-        <ChatBox title={title} />
+        <ChatBox title={bookSummary.title} />
       </ResizableBox>
       <ResizableBox
         className="flex-1 bg-[#1a1b26] p-4"
@@ -25,8 +32,17 @@ export default function SummaryChat({ title }) {
         maxConstraints={[Infinity, Infinity]}
         resizeHandles={["w"]}
       >
-        <div>
-          <p></p>
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="text-white bg-white border-r border-gray-200 dark:bg-gray-600 rounded-2xl p-4 m-[5rem] items-center ">
+            {bookSummary ? (
+              <>
+                <h2 className="text-2xl font-bold mb-4">{bookSummary.title}</h2>
+                <p className="text-lg">{bookSummary.summary}</p>
+              </>
+            ) : (
+              <p>No summary available for this book.</p>
+            )}
+          </div>
         </div>
       </ResizableBox>
     </div>
