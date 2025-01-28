@@ -3,10 +3,10 @@ import { connectToDatabase } from "@/app/lib/mongodb";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { email, password } = req.body;
+    const { email, password, name, genre, gender } = req.body;
 
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email and password are required" });
+    if (!email || !password || !name || !genre || !gender) {
+      return res.status(400).json({ error: "All fields are required" });
     }
 
     try {
@@ -23,6 +23,9 @@ export default async function handler(req, res) {
 
       // Insert the new user
       await db.collection("users").insertOne({
+        name,
+        genre,
+        gender,
         email,
         password: hashedPassword,
       });
